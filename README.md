@@ -5,19 +5,19 @@
 
 ```mermaid
 sequenceDiagram
-    participant Usuario
+    participant Cliente
     participant Servidor
     Usuario->>Servidor: Solicitud de registro POST /user/save
     Usuario->>Servidor: RequestBody
     Servidor->>Servidor: Validación del formato del correo
-    Servidor-->>Usuario: Error de validación de correo HTTP 400
+    Servidor-->>Cliente: Error de validación de correo HTTP 400
     Servidor->>Servidor: Validación del formato password
-    Servidor-->>Usuario: Error de validación de password HTTP 400
+    Servidor-->>Cliente: Error de validación de password HTTP 400
     Servidor->>Servidor: Validación que no exista correo en BD
-    Servidor-->>Usuario: Error, el correo ya registrado HTTP 409
+    Servidor-->>Cliente: Error, el correo ya registrado HTTP 409
     Servidor->>Servidor: Generacion de token
     Servidor->>Servidor: Guarda User en BD
-    Servidor-->>Usuario: Responde OK con código HTTP 200
+    Servidor-->>Cliente: Responde OK con código HTTP 200
 ```
 ## Pre-Requisitos
 
