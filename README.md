@@ -33,7 +33,7 @@ Asegúrate de tener lo siguiente instalado y configurado:
 _Copiar y ejecutar el siguiente comando en una terminal git_
 
 ```bash
-git clone https://github.com/
+git clone https://github.com/jhonatanMD/ms-user.git
 ```
 
 _Dirigirse al IDE y importar el archivo_

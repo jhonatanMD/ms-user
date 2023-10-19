@@ -1,0 +1,185 @@
+openapi: 3.0.3
+info:
+  description: MicroService User
+  version: '1.0'
+  title: '[API] MS-USER'
+  termsOfService: https://www.linkedin.com/in/jhonatan-mallqui-83b25418a
+  contact:
+    name: Jhonatan Mallqui Diaz
+    url: https://www.linkedin.com/in/jhonatan-mallqui-83b25418a
+    email: jmdiaz190899gmail.com
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: localhost:8081
+tags:
+  - name: user-controller
+    description: User Controller
+paths:
+  /user:
+    get:
+      tags:
+        - user-controller
+      summary: get
+      operationId: getUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserResponseDto'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /user/save:
+    post:
+      tags:
+        - User
+      summary: Guardar Usuario
+      description: Guardar Usuarios
+      operationId: save user
+      requestBody:
+        description: Update an existent pet in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequestDto'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSaveResponseDto'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Bad Request
+        '409':
+          description: Conflict
+      deprecated: false
+
+components:
+  schemas:
+    PhoneDto:
+      type: object
+      properties:
+        citycode:
+          type: string
+          example: 1
+          description: Codigo de Ciudad
+        countrycode:
+          type: string
+          example: 57
+          description: Codigo de Pais
+        number:
+          type: string
+          example: 9234567
+          description: Numero de telefono
+      title: PhoneDto
+    UserRequestDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Jhonatan Mallqui
+          description: Nombre de usuario
+        email:
+          type: string
+          example: jmd@nisum.cl
+          description: Email de usuario
+        password:
+          type: string
+          example: A1234567
+          description: Password de usuario
+        phones:
+          type: array
+          description: Teléfonos del usuario
+          items:
+            $ref: '#/components/schemas/PhoneDto'
+      title: UserRequestDto
+    UserResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 44405e09-47ca-35cf-ab32-b38ad02987de
+          description: Id de usuario
+        name:
+          type: string
+          example: Jhonatan Mallqui
+          description: Nombre de usuario
+        email:
+          type: string
+          example: jmd@nisum.cl
+          description: Email de usuario
+        password:
+          type: string
+          example: A1234567
+          description: Password de usuario
+        isActive:
+          type: boolean
+          description: Usuario Activo
+          example: 'true'
+        token:
+          type: string
+          example: eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiSmhvbmF0YW4gTWFsbHF1aSIsImVtYWlsIjoiam1kQG5pc3VtLmNsIiwiaWF0IjoxNjk3NzM2MTAyLCJleHAiOjE2OTc3MzY3MDJ9.tPe7pEKBXInFgVLmaeBvpiNPSJHP2ETjEgMc8hI9Mos
+          description: Token de usuario
+        modified:
+          type: string
+          example: '2023-10-19T12:21:42.126604'
+          description: Fecha actualizacion de usuario
+        lastLogin:
+          type: string
+          example: '2023-10-19T12:21:42.126604'
+          description: Ultimo inicio de sesion de usuario
+        created:
+          type: string
+          example: '2023-10-19T12:21:42.126604'
+          description: Fecha creacion de usuario
+        phones:
+          type: array
+          description: Teléfonos del usuario
+          items:
+            $ref: '#/components/schemas/PhoneDto'
+      title: UserResponseDto
+    UserSaveResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 44405e09-47ca-35cf-ab32-b38ad02987de
+          description: Id de usuario
+        isActive:
+          type: boolean
+          description: Usuario Activo
+          example: 'true'
+        token:
+          type: string
+          example: eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiSmhvbmF0YW4gTWFsbHF1aSIsImVtYWlsIjoiam1kQG5pc3VtLmNsIiwiaWF0IjoxNjk3NzM2MTAyLCJleHAiOjE2OTc3MzY3MDJ9.tPe7pEKBXInFgVLmaeBvpiNPSJHP2ETjEgMc8hI9Mos
+          description: Token de usuario
+        modified:
+          type: string
+          example: '2023-10-19T12:21:42.126604'
+          description: Fecha actualizacion de usuario
+        lastLogin:
+          type: string
+          example: '2023-10-19T12:21:42.126604'
+          description: Ultimo inicio de sesion de usuario
+        created:
+          type: string
+          example: '2023-10-19T12:21:42.126604'
+          description: Fecha creacion de usuario
+      title: UserSaveResponseDto
