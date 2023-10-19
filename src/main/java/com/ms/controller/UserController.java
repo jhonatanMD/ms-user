@@ -35,7 +35,7 @@ public class UserController {
     @ApiOperation(value = "Guardar Usuario", nickname = "save user", notes = "Guardar Usuarios", response = UserResponseDto.class, tags="User")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successful operation", response = UserResponseDto.class),
-            @ApiResponse(code = 404, message = "Bad Request"),
+            @ApiResponse(code = 400, message = "Bad Request"),
             @ApiResponse(code = 409, message = "Conflict")})
     @PostMapping(
             value = "/save",
