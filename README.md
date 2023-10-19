@@ -79,7 +79,7 @@ validate:
 * Dentro del IDE buscar el main que se encuentra en la clase MsUserApplication.java darle click derecho y hacer correr programa (Run)
 
 * Despues de Eso ir a postman y consumir la api : http://localhost:8081/user
-* 
+  
 * Ruta de collection [ms-user.postman_collection.json](ms-user.postman_collection.json)
 ## Ejecución con mvn
 
