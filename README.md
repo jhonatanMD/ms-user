@@ -47,6 +47,33 @@ _Visualización de modelos generados por swagger_
 - dirigirse al pom , dar clic derecho
 - Seleccionar maven y Generate Sources and Update Folders
 
+## Configuración del Puerto
+```
+server.port=8081
+```
+## Configuración en application.yml
+
+En el archivo `application.yml` de la aplicación, se encuentra la configuración relacionada con las instrucciones de validación. A continuación, se muestra un ejemplo de cómo se configuran las reglas de validación en el archivo `application.yml`:
+
+```properties
+
+validate:
+ email:
+   regex: "^[A-Za-z0-9._%+-]+@nisum\\.cl$" #formato email personalizado
+   #regex: "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$" #formato personalizado
+   message: "debe tener el formato correcto , example@nisum.cl"
+ password:
+   uppercase:
+     regex: "^(?=.*[A-Z].*).*"
+     message: "debe contener al menos una letra en mayuscula"
+   digit:
+     regex: "^(?=.*[0-9].*).*"
+     message: "debe contener al menos un digito"
+   length:
+     regex: "^(.){8,}"
+     message: "debe tener una longitud minima de 8 caracteres"
+```
+
 ## Ejecución
 
 * Dentro del IDE buscar el main que se encuentra en la clase MsUserApplication.java darle click derecho y hacer correr programa (Run)
@@ -68,9 +95,9 @@ _Construir Proyecto_
 mvn clean package
 ``` 
 _Ejecutar comando docker para crear la imagen_
-bash
+```bash
 docker build -t ms-user:v1 .
-
+```
 _Ejecutar comando para correr el contenedor que contiene la imagen del proyecto_
 ```bash 
 docker run -p 8081:8081 ms-user:v1

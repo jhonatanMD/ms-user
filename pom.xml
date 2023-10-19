@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.ms</groupId>
     <artifactId>ms-user</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>ms-user</name>
     <description>ms-user</description>
     <properties>
@@ -104,6 +104,10 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
