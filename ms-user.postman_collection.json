@@ -1,0 +1,50 @@
+{
+	"info": {
+		"_postman_id": "b90bfa52-001d-433b-89f1-3a25eee3725e",
+		"name": "ms-user",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "21164794",
+		"_collection_link": "https://www.postman.com/avionics-astronomer-20972953/workspace/my-workspace/collection/21164794-b90bfa52-001d-433b-89f1-3a25eee3725e?action=share&source=collection_link&creator=21164794"
+	},
+	"item": [
+		{
+			"name": "save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jhonatan\",\r\n    \"email\": \"jmd4@nism.cl\",\r\n    \"password\": \"A1234567\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"1234567\",\r\n            \"citycode\": \"1\",\r\n            \"countrycode\": \"57\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8081/user/save"
+			},
+			"response": []
+		},
+		{
+			"name": "get-users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8081/user"
+			},
+			"response": []
+		}
+	]
+}
