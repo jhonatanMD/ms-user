@@ -7,8 +7,8 @@
 sequenceDiagram
     participant Cliente
     participant Servidor
-    Usuario->>Servidor: Solicitud de registro POST /user/save
-    Usuario->>Servidor: RequestBody
+    Cliente->>Servidor: Solicitud de registro POST /user/save
+    Cliente->>Servidor: RequestBody
     Servidor->>Servidor: Validación del formato del correo
     Servidor-->>Cliente: Error de validación de correo HTTP 400
     Servidor->>Servidor: Validación del formato password
