@@ -3,6 +3,22 @@
 ## Diagrama Proyecto
 ![img.png](img.png)
 
+```mermaid
+sequenceDiagram
+    participant Usuario
+    participant Servidor
+    Usuario->>Servidor: Solicitud de registro POST /user/save
+    Usuario->>Servidor: RequestBody
+    Servidor->>Servidor: Validación del formato del correo
+    Servidor-->>Usuario: Error de validación de correo HTTP 400
+    Servidor->>Servidor: Validación del formato password
+    Servidor-->>Usuario: Error de validación de password HTTP 400
+    Servidor->>Servidor: Validación que no exista correo en BD
+    Servidor-->>Usuario: Error, el correo ya registrado HTTP 409
+    Servidor->>Servidor: Generacion de token
+    Servidor->>Servidor: Guarda User en BD
+    Servidor-->>Usuario: Responde OK con código HTTP 200
+```
 ## Pre-Requisitos
 
 Asegúrate de tener lo siguiente instalado y configurado:
@@ -67,16 +83,3 @@ docker run -p 8081:8081 ms-user:v1
 * Se podra ver los endpoint de la api y su funcionalidad.
 
 
-```mermaid
-sequenceDiagram
-    participant Alice
-    participant Bob
-    Alice->>John: Hello John, how are you?
-    loop Healthcheck
-        John->>John: Fight against hypochondria
-    end
-    Note right of John: Rational thoughts <br/>prevail!
-    John-->>Alice: Great!
-    John->>Bob: How about you?
-    Bob-->>John: Jolly good!
-```
